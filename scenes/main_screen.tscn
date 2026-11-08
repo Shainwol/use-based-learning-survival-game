@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://13t5s175kieu"]
+
+[ext_resource type="Script" uid="uid://cr87nwludery2" path="res://scripts/background.gd" id="1_7fvvs"]
+[ext_resource type="Script" uid="uid://cioavrbhsbljl" path="res://scenes/main_screen.gd" id="1_aum10"]
+[ext_resource type="Script" uid="uid://dx3gq54hhypko" path="res://scripts/action_screen.gd" id="2_kusfh"]
+
+[node name="main_screen" type="Node2D" unique_id=1328849569]
+script = ExtResource("1_aum10")
+
+[node name="background" type="Node2D" parent="." unique_id=26740126]
+script = ExtResource("1_7fvvs")
+
+[node name="action_screen" type="CanvasLayer" parent="." unique_id=480022987]
+script = ExtResource("2_kusfh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="action_screen" unique_id=1297408191]
+offset_left = 41.0
+offset_top = 42.0
+offset_right = 176.0
+offset_bottom = 184.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="action_screen/VBoxContainer" unique_id=337634667]
+layout_mode = 2
+
+[node name="stamina" type="Label" parent="action_screen/VBoxContainer/HBoxContainer" unique_id=763454880]
+layout_mode = 2
+text = "Stamina:"
+
+[node name="stamina_number" type="Label" parent="action_screen/VBoxContainer/HBoxContainer" unique_id=1584822771]
+unique_name_in_owner = true
+layout_mode = 2
+text = "20"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="action_screen/VBoxContainer" unique_id=934692883]
+visible = false
+layout_mode = 2
+
+[node name="strenght" type="Label" parent="action_screen/VBoxContainer/HBoxContainer2" unique_id=2118447494]
+layout_mode = 2
+text = "Fuerza:"
+
+[node name="strenght_number" type="Label" parent="action_screen/VBoxContainer/HBoxContainer2" unique_id=2083295863]
+layout_mode = 2
+text = "0"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="action_screen/VBoxContainer" unique_id=1324229115]
+visible = false
+layout_mode = 2
+
+[node name="magic" type="Label" parent="action_screen/VBoxContainer/HBoxContainer3" unique_id=814982461]
+layout_mode = 2
+text = "Magia:"
+
+[node name="magic_number" type="Label" parent="action_screen/VBoxContainer/HBoxContainer3" unique_id=1195408879]
+layout_mode = 2
+text = "0"
+
+[node name="character" type="Label" parent="action_screen" unique_id=2129708003]
+offset_left = 22.0
+offset_top = 8.0
+offset_right = 108.0
+offset_bottom = 31.0
+text = "Personaje:"
+
+[node name="time" type="Label" parent="action_screen" unique_id=662702825]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -125.0
+offset_top = 8.0
+offset_right = -17.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "Hora: 8:00 AM"
+
+[node name="actions" type="Label" parent="action_screen" unique_id=1494721438]
+offset_left = 296.0
+offset_top = 14.0
+offset_right = 382.0
+offset_bottom = 37.0
+text = "Acciones:"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="action_screen" unique_id=75090521]
+offset_left = 291.0
+offset_top = 44.0
+offset_right = 426.0
+offset_bottom = 186.0
+
+[node name="jump" type="Button" parent="action_screen/VBoxContainer2" unique_id=165139088]
+layout_mode = 2
+text = "Saltar 5 min"
+
+[node name="run" type="Button" parent="action_screen/VBoxContainer2" unique_id=1100477211]
+visible = false
+layout_mode = 2
+text = "Correr 15 min"
+
+[node name="Button3" type="Button" parent="action_screen/VBoxContainer2" unique_id=470847296]
+visible = false
+layout_mode = 2
+text = "Talar Madera 1h"
+
+[node name="shortrest" type="Button" parent="action_screen/VBoxContainer2" unique_id=1430765260]
+layout_mode = 2
+text = "Descansar 5 min"
+
+[node name="Button4" type="Button" parent="action_screen/VBoxContainer2" unique_id=1098671431]
+visible = false
+layout_mode = 2
+text = "Dormir 8h"
+
+[connection signal="pressed" from="action_screen/VBoxContainer2/jump" to="action_screen" method="_on_jump_pressed"]
+[connection signal="pressed" from="action_screen/VBoxContainer2/shortrest" to="action_screen" method="_on_shortrest_pressed"]
