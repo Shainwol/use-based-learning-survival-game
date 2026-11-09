@@ -1,14 +1,16 @@
 [gd_scene format=3 uid="uid://13t5s175kieu"]
 
-[ext_resource type="Script" uid="uid://cr87nwludery2" path="res://scripts/background.gd" id="1_7fvvs"]
 [ext_resource type="Script" uid="uid://cioavrbhsbljl" path="res://scenes/main_screen.gd" id="1_aum10"]
 [ext_resource type="Script" uid="uid://dx3gq54hhypko" path="res://scripts/action_screen.gd" id="2_kusfh"]
 
 [node name="main_screen" type="Node2D" unique_id=1328849569]
 script = ExtResource("1_aum10")
 
+[node name="Timer" type="Timer" parent="." unique_id=163045211]
+wait_time = 1.5
+autostart = true
+
 [node name="background" type="Node2D" parent="." unique_id=26740126]
-script = ExtResource("1_7fvvs")
 
 [node name="action_screen" type="CanvasLayer" parent="." unique_id=480022987]
 script = ExtResource("2_kusfh")
@@ -62,16 +64,33 @@ offset_right = 108.0
 offset_bottom = 31.0
 text = "Personaje:"
 
-[node name="time" type="Label" parent="action_screen" unique_id=662702825]
+[node name="HBoxContainer" type="HBoxContainer" parent="action_screen" unique_id=59551330]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -125.0
-offset_top = 8.0
-offset_right = -17.0
-offset_bottom = 31.0
+offset_left = -124.0
+offset_top = 14.0
+offset_right = -16.0
+offset_bottom = 37.0
 grow_horizontal = 0
-text = "Hora: 8:00 AM"
+
+[node name="day" type="Label" parent="action_screen/HBoxContainer" unique_id=49226251]
+layout_mode = 2
+text = "Dia:"
+
+[node name="day_number" type="Label" parent="action_screen/HBoxContainer" unique_id=1656714187]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1"
+
+[node name="time" type="Label" parent="action_screen/HBoxContainer" unique_id=662702825]
+layout_mode = 2
+text = "Hora:"
+
+[node name="time_text" type="Label" parent="action_screen/HBoxContainer" unique_id=386461714]
+unique_name_in_owner = true
+layout_mode = 2
+text = "8:00 AM"
 
 [node name="actions" type="Label" parent="action_screen" unique_id=1494721438]
 offset_left = 296.0
@@ -88,7 +107,7 @@ offset_bottom = 186.0
 
 [node name="jump" type="Button" parent="action_screen/VBoxContainer2" unique_id=165139088]
 layout_mode = 2
-text = "Saltar 5 min"
+text = "Saltar"
 
 [node name="run" type="Button" parent="action_screen/VBoxContainer2" unique_id=1100477211]
 visible = false
@@ -102,12 +121,13 @@ text = "Talar Madera 1h"
 
 [node name="shortrest" type="Button" parent="action_screen/VBoxContainer2" unique_id=1430765260]
 layout_mode = 2
-text = "Descansar 5 min"
+text = "Descansar"
 
 [node name="Button4" type="Button" parent="action_screen/VBoxContainer2" unique_id=1098671431]
 visible = false
 layout_mode = 2
 text = "Dormir 8h"
 
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="action_screen/VBoxContainer2/jump" to="action_screen" method="_on_jump_pressed"]
 [connection signal="pressed" from="action_screen/VBoxContainer2/shortrest" to="action_screen" method="_on_shortrest_pressed"]
